@@ -1,7 +1,4 @@
-package org.java.guice;
-
-import org.java.guice.singleImpl.CheckoutService;
-import org.java.guice.singleImpl.DiscountGuiceModule;
+package org.java.guice.singleImpl;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
