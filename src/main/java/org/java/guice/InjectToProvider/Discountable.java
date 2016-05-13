@@ -6,4 +6,5 @@ package org.java.guice.InjectToProvider;
 public interface Discountable {
 
     double getDiscount();
+
 }

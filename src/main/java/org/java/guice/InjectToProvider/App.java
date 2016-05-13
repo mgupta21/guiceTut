@@ -1,5 +1,7 @@
 package org.java.guice.InjectToProvider;
 
+import org.java.guice.InjectToProvider.customFactory.UserInterfaceUtil;
+
 import com.google.inject.Guice;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
@@ -16,10 +18,6 @@ public class App {
         this.checkoutService = checkoutService;
     }
 
-    void start() {
-        checkoutService.checkout(100.0D);
-    }
-
     public static void main(String[] args) {
 
         // Create object graph of factories
@@ -29,6 +27,11 @@ public class App {
         App application = injector.getInstance(App.class);
 
         application.start();
+    }
+
+    void start() {
+        // checkoutService.checkout(100.0D);
+        checkoutService.checkout(new UserInterfaceUtil().getUserCheckoutCart());
     }
 
 }

@@ -1,5 +1,8 @@
 package org.java.guice.InjectToProvider;
 
+import org.java.guice.InjectToProvider.customFactory.DiscountFactory;
+import org.java.guice.InjectToProvider.customFactory.ShoppingCart;
+
 import com.google.inject.Inject;
 
 /**
@@ -7,16 +10,20 @@ import com.google.inject.Inject;
  */
 public class CheckoutService {
 
-    private final Discountable discountable;
+    // Injected by provider
+    // private final Discountable discountable;
+
+    private final DiscountFactory discountFactory;
 
     @Inject
-    public CheckoutService(Discountable discountable) {
-        this.discountable = discountable;
+    public CheckoutService(DiscountFactory discountFactory) {
+        this.discountFactory = discountFactory;
     }
 
-    public double checkout(double shoppingCartTotal) {
-        double totalAfterDiscount = shoppingCartTotal - (shoppingCartTotal * discountable.getDiscount());
-        System.out.printf("%nShopping cart initially [$%.2f] with a discount of %.2f%% = [$%.2f]%n%n", shoppingCartTotal, discountable.getDiscount() * 100, totalAfterDiscount);
+    public double checkout(ShoppingCart cart) {
+        Discountable discountable = discountFactory.getDiscount(cart);
+        double totalAfterDiscount = cart.getCartTotal() - (cart.getCartTotal() * discountable.getDiscount());
+        System.out.printf("%nShopping cart initially [$%.2f] with a discount of %.2f%% = [$%.2f]%n%n", cart.getCartTotal(), discountable.getDiscount() * 100, totalAfterDiscount);
         return totalAfterDiscount;
     }
 }
