@@ -1,11 +1,6 @@
-package org.java.guice.provider;
+package org.java.guice.singleImpl;
 
 import java.time.LocalTime;
-
-import org.java.guice.singleImpl.Discountable;
-import org.java.guice.singleImpl.EarlyBirdDiscount;
-import org.java.guice.singleImpl.NightOwlDiscount;
-import org.java.guice.singleImpl.NoDiscount;
 
 import com.google.inject.Provider;
 

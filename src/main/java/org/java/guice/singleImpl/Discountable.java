@@ -1,7 +1,5 @@
 package org.java.guice.singleImpl;
 
-import org.java.guice.provider.DiscountProvider;
-
 import com.google.inject.ProvidedBy;
 
 /**
